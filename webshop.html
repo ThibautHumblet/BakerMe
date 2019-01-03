@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylereset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Montserrat:900|Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>Webshop</title>
+</head>
+
+<body>
+    <div class="webshoplayout">
+        <div class="navbar">
+            <div class="navbar-header">
+                <div class="navbar-titel">
+                    <a href="index.html">
+                        <p>B</p>
+                        <p class="a">a</p>
+                        <p class="k">k</p>
+                        <p class="e1">e</p>
+                        <p class="r">r</p>
+                        <p class="m">M</p>
+                        <p class="e2">e</p>
+                        <p class="broodlogo"><img class="logobrood" src="/images/logoBread.png"></p>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-btn">
+                <label for="navbar-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <input type="checkbox" id="navbar-check">
+            <div class="navbar-links">
+                <a href="webshop.html">Webshop</a>
+                <a href="winkelwagen.html">Winkelwagentje <i class="fa fa-shopping-cart"></i></a>
+                <a href="overons.html" id="#overons">Over ons</a>
+            </div>
+        </div>
+        <div class="content infowebshop">
+            <p>
+                Of het nu voor een ontbijt is of een uitgebreide brunch, bij BakerMe hebben we voor iedereen wat wils.
+                Met ons assortiment aan brood, koffiekoeken en zelfs beleg, maken we onze belofte van een aangepast
+                ontbijt voor iedereen waar. Dit elke dag opnieuw! </p></br>
+            </p>
+            <p>
+                Wekelijks passen we onze menukaart aan en met onze
+                lokale partners hebben we zelf een deal van de week. </br> Benieuwd wat we allemaal hebben? Ontdek het
+                nu zelf!
+            </p>
+        </div>
+
+        <div class="filter">
+            <form>
+                <label class="filtercheckbox">
+                    <input type="checkbox" name="filter" value="brood" checked="checked"><span class="checkmark"></span>
+                    Brood</br>
+                </label>
+                <label class="filtercheckbox">
+                    <input type="checkbox" name="filter" value="koffiekoek"><span class="checkmark"></span>
+                    Koffiekoeken</br>
+                </label>
+                <label class="filtercheckbox">
+                    <input type="checkbox" name="filter" value="divers"><span class="checkmark"></span> Divers</br>
+                </label>
+            </form>
+        </div>
+
+        <div class="assortiment">
+            <div class="assortimentitem" onclick="bestel('meergranenbrood')">
+                <img src="/images/meergranen.jpg" class="fotoassortiment" alt="Meergranenbrood">
+                <p>Meergranen</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+
+            <div class="assortimentitem" onclick="bestel('achtkoek')">
+                <img src="/images/achtkoek.jpg" class="fotoassortiment" alt="Achtkoek">
+                <p>Achtkoek</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('witcarre')">
+                <img src="/images/gewoonwit.jpg" class="fotoassortiment" alt="Witt carré">
+                <p>Wit Carre</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('baguette')">
+                <img src="/images/baguette.jpg" class="fotoassortiment" alt="Baguette">
+                <p>Baguette</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('nutella')">
+                <img src="/images/nutella.jpg" class="fotoassortiment" alt="Nutella">
+                <p>Nutella</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('eclair')">
+                <img src="/images/eclairs.jpg" class="fotoassortiment" alt="Eclairs">
+                <p>Eclair</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('goudajong')">
+                <img src="/images/goudajong.jpg" class="fotoassortiment" alt="Gouda jong">
+                <p>Gouda jong</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('volkorenbrood')">
+                <img src="/images/volkoren.jpg" class="fotoassortiment" alt="Volkorenbrood">
+                <p>Volkoren</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('franbresilienne')">
+                <img src="/images/franbresilienne.jpg" class="fotoassortiment" alt="Bresiliennetaart">
+                <p>Bresilienne taart</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('croissant')">
+                <img src="/images/croissant.jpg" class="fotoassortiment" alt="Croissant">
+                <p>Croissant</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('vierkantpudding')">
+                <img src="/images/chocoladevierkant.jpg" class="fotoassortiment" alt="Vierkante chocoladekoek">
+                <p>Vierkante puddingkoek</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="assortimentitem" onclick="bestel('sandwiches')">
+                <img src="/images/sandwiches.jpg" class="fotoassortiment" alt="Sandwiches">
+                <p>Sandwiches</p> <i class="fa fa-shopping-cart"></i>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="links"><a href="#">Disclaimer</a></div>
+            <div class="rechts">&copy; Thibaut Humblet, 2018</div>
+        </div>
+    </div>
+</body>
+
+</html>
