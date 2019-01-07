@@ -1,743 +1,758 @@
-* {
-    box-sizing: border-box;
-}
+ /* elke keer dat ik een ander type styling toepas, verklaar ik wat voor type het is boven de eerste keer dat ik dat type element heb gestyled
+bijvoorbeeld:
 
-body {
-    font-family: 'Roboto', sans-serif;
-    /* Ik heb hier een subtiele achtergrond gebruikt die niet te veel opvalt maar wel beter is
+--hier style ik een klasse--
+.voorbeelddiv {
+    ...   
+} 
+
+Ik besef dat ik er een relatief groot project van heb gemaakt. Naar mijn mening was dit omdat ik anders niet een correct beeld kon geven over
+mijn concept. Zo is er onder andere additionele layout voor tablet view, maar ook een deel javascript-code om het winkelwagentje te laten werken.
+
+Met vriendelijke groeten
+Thibaut Humblet, 1EA4
+*/
+
+ /* styling op alle elementen tegelijk */
+
+ * {
+     /* overal wordt nu border-box toegepast (ik had dit nodig om mijn paddings correct in te stellen) */
+     box-sizing: border-box;
+ }
+
+ /* styling op de html body tag. Dit is vooral handig om overal dezelfde huisstijl (achtergrond, lettertypes, ...) toe te passen. */
+
+ body {
+     font-family: 'Roboto', sans-serif;
+     /* Ik heb hier een subtiele achtergrond gebruikt die niet te veel opvalt maar wel beter is
     dan gewoon een witte achtergrond */
-    background-color: #ffffff;
-    background-image: url("https://www.transparenttextures.com/patterns/ag-square.png");
-}
+     background-color: #ffffff;
+     background-image: url("https://www.transparenttextures.com/patterns/ag-square.png");
+ }
 
-hr {
+ /* Styling van een klasse. Dit gebeurt via een punt vlak voor de naam toe te voegen. */
 
-}
+ .logobrood {
+     margin: 8.5px;
+     height: 30px;
+     display: inline-block;
+     vertical-align: middle;
+ }
 
-.clear {
-    /* een clear tag die gemakkelijk als  */
-    clear: both;
-}
+ .hoofdtitel {
+     grid-area: titel;
+     text-align: center;
+     padding: 50px;
+     margin: 15px;
+     background: rgba(255, 255, 255, 0.7);
+ }
 
-.logobrood {
-    margin: 8.5px;
-    height: 30px;
-    display: inline-block;
-    vertical-align: middle;
-}
+ /* Deze klasse zorgt ervoor dat de mobile titel mooi in het midden van het scherm blijft */
 
-.hoofdtitel {
-    grid-area: titel;
-    text-align: center;
-    padding: 50px;
-    margin: 15px;
-    background: rgba(255, 255, 255, 0.7);
-}
+ .centerscreen {
+     display: inline-block;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     top: 30%;
+     margin: auto;
+ }
 
-.centerscreen {
-    display: inline-block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 30%;
-    margin: auto;
-}
+ .mobileknoppen {
+     grid-area: mobknop;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     position: relative;
+     width: auto;
+ }
 
-.mobileknoppen {
-    grid-area: mobknop;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    width: auto;
-}
+ /* Child selector. het '>'-teken gaat alleen de elementen stylen die direct onder de bovenstaande klasse staan. in dit voorbeeld worden buttons die geen
+    direct kind zijn van de a-tag en waarvan de a-tag geen direct kind is van .mobileknoppen, niet gestyled */
 
-.mobileknoppen>a>button {
-    color: black;
-    background-color: white;
-    border-color: black;
-    border-style: solid;
-    border-width: 0.5px;
-    text-decoration: none;
-    padding: 20px 45px;
-    margin: 10px;
-    width: 90%;
-    border-radius: 5%;
-}
+ .mobileknoppen>a>button {
+     color: black;
+     background-color: white;
+     border-color: black;
+     border-style: solid;
+     border-width: 0.5px;
+     text-decoration: none;
+     padding: 20px 45px;
+     margin: 10px;
+     width: 90%;
+     border-radius: 5%;
+ }
 
-.content .googlemaps>div>iframe {
-    grid-area: gmaps;
-    display: grid;
-    width: 100%;
-    height: auto;
-}
+ .googlemaps>div>iframe {
+     grid-area: gmaps;
+     display: grid;
+     width: 100%;
+     height: auto;
+ }
 
-.googlemaps>div {
-    margin-top: 10px;
-    margin-bottom: 40px;
-}
+ .googlemaps>div {
+     margin-top: 10px;
+     margin-bottom: 40px;
+ }
 
-.content {
-    grid-area: content;
-}
+ /* general sibling selector. De 'p'-tags die na de eerste 'p'-tag komen, zullen deze style krijgen.
+Ik heb het hier met een general sibling selector gedaan omdat dit properder is dan een extra id of class op deze p-tag te zetten. */
 
-.contentindex {
-    grid-area: contentindex;
-    display: none;
-}
+ .googlemaps p~p {
+     font-style: italic;
+     margin-top: 20px;
+ }
 
-.omslagfoto {
-    grid-area: omslagfoto;
-    width: 100%;
-    display: none;
-}
+ .content {
+     grid-area: content;
+ }
 
-.content h2 {
-    font-size: 18px;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
+ .contentindex {
+     grid-area: contentindex;
+     display: none;
+ }
 
-.overons p {
-    margin: 15px;
-    width: auto;
-    margin-top: 10px;
-    font-size: 16px;
-    padding-bottom: 15px;
-}
+ .iconinfo {
+     width: auto;
+     display: inline-block;
+     padding-left: 10px;
+     padding-right: 10px;
+     margin-bottom: 50px;
+ }
 
-.infowebshop {
-    width: auto;
-    margin: 10px;
-    font-size: 16px;
-    padding-bottom: 10px;
-}
+ .iconinfo>img {
+     width: auto;
+     height: 50px;
+     border-style: solid;
+     border-radius: 45px;
+     background-color: coral;
+     padding: 10px;
+     margin-bottom: 15px;
+ }
 
-#donker {
-    background: coral;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    color: white;
-}
+ .omslagfoto {
+     grid-area: omslagfoto;
+     width: 100%;
+     display: none;
+ }
 
-.footer {
-    grid-area: ft;
-    background-color: teal;
-    font-size: 12px;
-    color: #fff;
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 20px;
-    margin-top: 30px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
+ /* Descendant selector. alle h2 elementen die binnen .content zitten, rechtstreeks of onrechtstreeks, worden gestyled. */
 
-.footerindex {
-    position: fixed;
-    bottom: 0;
-    height: 7%;
-}
+ .content h2 {
+     font-size: 18px;
+     text-align: center;
+     margin-top: 25px;
+     margin-bottom: 10px;
+ }
 
-.whatsnew {
-    grid-area: new;
-    border-width: 2px;
-    border-style: solid;
-    display: none;
-}
+ .overons p {
+     margin: 15px;
+     width: auto;
+     margin-top: 10px;
+     font-size: 16px;
+     padding-bottom: 2px;
+ }
 
-.navbar {
-    grid-area: navbar;
-    height: 50px;
-    width: 100%;
-    background-color: teal;
-    position: relative;
-    margin: 0px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
+ .infowebshop {
+     width: auto;
+     margin: 10px;
+     font-size: 16px;
+     padding-bottom: 10px;
+ }
 
-.filter {
-    grid-area: filter;
-}
+ .footer {
+     grid-area: ft;
+     background-color: teal;
+     font-size: 12px;
+     color: #fff;
+     padding: 10px;
+     width: 100%;
+     height: 40px;
+     text-align: center;
+     vertical-align: middle;
+     line-height: 20px;
+     margin-top: 30px;
+     /* Met de box-shadow heb ik de header en de footer een tikkeltje meer subtiliteit gegeven in de overgang van header naar main naar div.
+    Je ziet nauwelijks een verschil, maar het is zeker en vast een meerwaarde  */
+     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+ }
 
-.filtercheckbox {
-    font-size: 15px;
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin: 20px;
-}
+ .footerindex {
+     position: fixed;
+     bottom: 0;
+     height: 7%;
+ }
 
-.filtercheckbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
+ .navbar {
+     grid-area: navbar;
+     height: 50px;
+     width: 100%;
+     background-color: teal;
+     position: relative;
+     margin: 0px;
+     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+ }
 
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
+ /* De styles van filter worden helaas niet gebruikt. Lees bij webshop.html voor de reden waarom ik ze er alsnog heb ingelaten. */
 
-.filtercheckbox:hover input~.checkmark {
-    background-color: #ccc;
-}
+ .filter {
+     grid-area: filter;
+ }
 
-.filtercheckbox input:checked~.checkmark {
-    background-color: coral;
-}
+ .filtercheckbox {
+     font-size: 15px;
+     display: block;
+     position: relative;
+     padding-left: 35px;
+     margin-bottom: 12px;
+     cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     margin: 20px;
+ }
 
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+ .filtercheckbox input {
+     position: absolute;
+     opacity: 0;
+     cursor: pointer;
+     height: 0;
+     width: 0;
+ }
 
-.filtercheckbox input:checked~.checkmark:after {
-    display: block;
-}
+ .checkmark {
+     position: absolute;
+     top: 0;
+     left: 0;
+     height: 25px;
+     width: 25px;
+     background-color: #eee;
+ }
 
-.filtercheckbox .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
+ .filtercheckbox:hover input~.checkmark {
+     background-color: #ccc;
+ }
 
-.assortiment {
-    display: grid;
-    grid-area: assortiment;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-    padding-left: 25px;
-    padding-right: 25px;
-}
+ .filtercheckbox input:checked~.checkmark {
+     background-color: coral;
+ }
 
-.assortimentitem {
-    width: auto;
-    height: 100%;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10% 10% 0% 0%;
-    background-color: coral;
-}
+ .checkmark:after {
+     content: "";
+     position: absolute;
+     display: none;
+ }
 
-.assortimentitem p {
-    padding: 10px;
-    font-size: 15px;
-    float: left;
-    color: #fff;
-    max-width: 75%;
-}
+ .filtercheckbox input:checked~.checkmark:after {
+     display: block;
+ }
 
-.assortimentitem>.fa {
-    margin-top: 10px;
-    margin-right: 15px;
-    float: right;
-    color: #fff;
-}
+ .filtercheckbox .checkmark:after {
+     left: 9px;
+     top: 5px;
+     width: 5px;
+     height: 10px;
+     border: solid white;
+     border-width: 0 3px 3px 0;
+     -webkit-transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     transform: rotate(45deg);
+ }
 
-.fotoassortiment {
-    border-style: solid;
-    border-bottom-width: 1px;
-    box-sizing: border-box;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10% 10% 0% 0%;
-}
+ .assortiment {
+     display: grid;
+     grid-area: assortiment;
+     grid-template-columns: repeat(2, 1fr);
+     grid-gap: 1em;
+     padding-left: 25px;
+     padding-right: 25px;
+ }
 
-.navbar>.navbar-header {
-    display: inline-block;
-    vertical-align: middle;
-}
+ .assortimentitem {
+     width: auto;
+     height: 100%;
+     border-style: solid;
+     border-width: 1px;
+     border-radius: 10% 10% 0% 0%;
+     background-color: coral;
+ }
 
-.navbar>.navbar-header>.navbar-titel {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 24px;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-}
+ .assortimentitem p {
+     padding: 10px;
+     font-size: 15px;
+     float: left;
+     color: #fff;
+     max-width: 75%;
+ }
 
-.navbar>.navbar-header>.navbar-titel>a {
-    text-decoration: none;
-    color: #fff;
-}
+ .assortimentitem>.fa {
+     margin-top: 10px;
+     margin-right: 15px;
+     float: right;
+     color: #fff;
+ }
 
-.navbar>.navbar-btn {
-    display: none;
-}
+ .fotoassortiment {
+     border-style: solid;
+     border-bottom-width: 1px;
+     box-sizing: border-box;
+     width: 100%;
+     height: auto;
+     border-radius: 10% 10% 0% 0%;
+ }
 
-.navbar>.navbar-links {
-    font-size: 14px;
-    float: right;
-}
+ .navbar>.navbar-header {
+     display: inline-block;
+     vertical-align: middle;
+ }
 
-.navbar>.navbar-links>a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #efefef;
-}
+ .navbar>.navbar-header>.navbar-titel {
+     display: inline-block;
+     vertical-align: middle;
+     font-size: 24px;
+     color: #fff;
+     font-family: 'Montserrat', sans-serif;
+ }
 
-.navbar>.navbar-links>a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-}
+ .navbar>.navbar-header>.navbar-titel>a {
+     text-decoration: none;
+     color: #fff;
+ }
 
-.navbar>#navbar-check {
-    display: none;
-}
+ .navbar>.navbar-btn {
+     display: none;
+ }
 
-.hoofdtitel>.titel {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.6em;
-}
+ .navbar>.navbar-links {
+     font-size: 14px;
+     float: right;
+ }
 
-.hoofdtitel>.ondertekst {
-    font-family: 'Amatic SC', cursive;
-    font-size: 1.5em;
-}
+ .navbar>.navbar-links>a {
+     display: inline-block;
+     padding: 13px 10px 13px 10px;
+     text-decoration: none;
+     color: #efefef;
+ }
 
-.footer a {
-    font-size: 12px;
-    color: #fff;
-}
+ .navbar>.navbar-links>a:hover {
+     background-color: rgba(0, 0, 0, 0.3);
+ }
 
-.footer>.links {
-    float: left;
-}
+ .navbar>#navbar-check {
+     display: none;
+ }
 
-.footer>.rechts {
-    float: right;
-}
+ .hoofdtitel>.titel {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 2.6em;
+ }
 
-.afbeeldingoverons {
-    height: auto;
-    width: 100%;
-    padding: 0% 10% 5% 10%;
-}
+ .hoofdtitel>.ondertekst {
+     font-family: 'Amatic SC', cursive;
+     font-size: 1.5em;
+ }
 
-.navbar-titel p {
-    display: inline-block;
-    margin-right: -4px;
-    box-sizing: border-box;
-}
+ .footer a {
+     font-size: 12px;
+     color: #fff;
+ }
 
-.winkelwagen{
-    display: grid;
-    grid-area: winkelwagen;
-    grid-gap: 1em;
-    padding-right: 25px;
-    margin-left: 10px;
-}
+ .footer>.links {
+     float: left;
+ }
 
-.disclaimer {
-    display: grid;
-    grid-area: disclaimer;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: block;
+ .footer>.rechts {
+     float: right;
+ }
 
-}
+ .afbeeldingoverons {
+     height: auto;
+     width: 100%;
+     padding: 0% 10% 5% 10%;
+ }
 
-.disclaimer h1 {
-    font-size: 20px;
-    font-weight: bold;
-}
+ .navbar-titel p {
+     display: inline-block;
+     margin-right: -4px;
+     box-sizing: border-box;
+ }
 
-.winkelwagenlayout {
-    display:grid;
-    grid-template-columns: 1,1fr;
-    grid-auto-rows: minmax(auto);
-    grid-template-areas: "navbar" "content" "winkelwagen" "disclaimer" "ft";
-}
+ .winkelwagen {
+     display: grid;
+     grid-area: winkelwagen;
+     grid-gap: 1em;
+     padding-right: 25px;
+     margin-left: 10px;
+ }
 
-.prijzen {
-    display: grid;
-    grid-area: prijzen;
-}
+ .disclaimer {
+     display: grid;
+     grid-area: disclaimer;
+     padding-left: 10px;
+     padding-right: 10px;
+     display: block;
+ }
 
-.winkelwagen button {
-    color: white;
-    background-color: coral;
-    border-color: black;
-    border-style: solid;
-    border-width: 0.5px;
-    padding: 5px 15px;
-    border-radius: 5%;
-    right: 7%;
-    position: absolute;
-}
+ .disclaimer h1 {
+     margin-top: 25px;
+     font-size: 20px;
+     font-weight: bold;
+ }
 
-.winkelwagen>div {
-    display: flex;
-    align-items: center;
-    margin-right: 5px;
-    
-}
-.winkelwagen>div>div {
-    margin-left: 15px;
-}
+ .disclaimer p {
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
 
-/* Smartphone layout */
+ .winkelwagenlayout {
+     display: grid;
+     grid-template-columns: 1, 1fr;
+     grid-auto-rows: minmax(auto);
+     grid-template-areas: "navbar" "content" "winkelwagen" "disclaimer" "ft";
+ }
 
-@media (max-width: 480px) {
-    .index {
-        background-image: url(./images/achtergrond-brood-compressed.jpg);
-        background-size: 1200px;
-        background-repeat: no-repeat;
-        background-position-x: center;
-    }
-    .indexlayout {
-        display: grid;
-        grid-template-columns: 1, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar" "titel" "mobknop" "ft";
-    }
-    .webshoplayout {
-        display: grid;
-        grid-template-columns: repeat() 1, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar" "content" "filter" "assortiment" "ft";
-    }
-    .overonslayout {
-        display: grid;
-        grid-template-columns: 1, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar" "content" "ft";
-    }
-    .navbar-titel {
-        padding: 0px 10px 10px 10px;
-    }
-    .winkelwagen span {
-        width: 25%;
-    }
-}
+ .prijzen {
+     display: grid;
+     grid-area: prijzen;
+ }
 
-/* Tablet layout */
+ .winkelwagen button {
+     color: white;
+     background-color: coral;
+     border-color: black;
+     border-style: solid;
+     border-width: 0.5px;
+     padding: 5px 15px;
+     border-radius: 5%;
+     right: 7%;
+     position: absolute;
+ }
 
-@media(min-width: 481px) {
-    .indexlayout {
-        display: grid;
-        grid-template-columns: 2, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar navbar" "titel titel" "mobknop mobknop" "ft ft";
-    }
-    .webshoplayout {
-        display: grid;
-        grid-template-columns: repeat() 1, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar" "content" "filter" "assortiment" "ft";
-    }
-    .mobileknoppen {
+ .winkelwagen>div {
+     display: flex;
+     align-items: center;
+     margin-right: 5px;
+ }
+
+ .winkelwagen>div>div {
+     margin-left: 15px;
+ }
+
+ .terugwebshop {
+     padding-top: 25px;
+     padding-bottom: 30px;
+ }
+
+ /* Deze div zorgt ervoor dat de footer sommige onderkanten van de pagina niet bedekt */
+
+ .footersspace {
+     display: block;
+     height: 50px;
+ }
+
+ /* Smartphone layout */
+
+ @media (max-width: 480px) {
+     .index {
+         background-image: url(./images/achtergrond-brood-compressed.jpg);
+         background-size: 1200px;
+         background-repeat: no-repeat;
+         background-position-x: center;
+     }
+     .indexlayout {
+         display: grid;
+         grid-template-columns: 1, 1fr;
+         grid-auto-rows: minmax(auto);
+         grid-template-areas: "navbar" "titel" "mobknop" "ft";
+     }
+     .webshoplayout {
+         display: grid;
+         grid-template-columns: repeat() 1, 1fr;
+         grid-auto-rows: minmax(auto);
+         grid-template-areas: "navbar" "content" "assortiment" "ft";
+     }
+     .overonslayout {
+         display: grid;
+         grid-template-columns: 1, 1fr;
+         grid-auto-rows: minmax(auto);
+         grid-template-areas: "navbar" "content" "ft";
+     }
+     .navbar-titel {
+         padding: 0px 10px 10px 10px;
+     }
+     .winkelwagen span {
+         width: 25%;
+     }
+ }
+
+ /* Tablet layout */
+
+ @media(min-width: 481px) {
+     .indexlayout {
+         display: grid;
+         grid-template-columns: 2, 1fr;
+         grid-auto-rows: minmax(auto);
+         grid-template-areas: "navbar navbar" "titel titel" "mobknop mobknop" "ft ft";
+     }
+     .webshoplayout {
+         display: grid;
+         grid-template-columns: repeat() 1, 1fr;
+         grid-auto-rows: minmax(auto);
+         grid-template-areas: "navbar" "content" "filter" "assortiment" "ft";
+     }
+     .mobileknoppen {
+         display: none;
+     }
+     .centerscreen {
+         display: block;
+         position: relative;
+         width: 100%;
+     }
+     .content, .disclaimer {
+         margin-left: 7%;
+         margin-right: 7%;
+         margin-bottom: 30px;
+         margin-top: 30px;
+     }
+     .hoofdtitel {
+         padding: 0;
+         background: none;
+         margin-top: 30px;
+     }
+     .omslagfoto {
+         display: block;
+         object-fit: cover;
+         height: 100px;
+     }
+     .assortiment {
+         grid-template-columns: repeat(3, 1fr);
+         padding-left: 7%;
+         padding-right: 7%;
+     }
+     .contentindex {
+         display: inline-block;
+     }
+     .winkelwagen {
+         margin-left: 7%;
+     }
+     .disclaimer {
+         padding-left: 0;
+     }
+     .iconindex {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         grid-auto-rows: 150%;
+         grid-gap: 1em;
+         padding-left: 25px;
+         padding-right: 25px;
+     }
+     .terugwebshop {
+        padding-bottom: 0px;
+     }
+     /* Deze stijlen zorgen ervoor dat er een inspringing in de header/footer komt van zodra het scherm groter wordt dan 481 px;*/
+     .navbar-header {
+         margin-left: 7%;
+     }
+     .navbar-titel {
+         padding-left: 0;
+     }
+     .navbar-btn {
+         margin-right: 7%;
+     }
+     .navbar-btn>label {
+         display: block
+     }
+     .navbar-links>a {
+         margin-left: 7%;
+     }
+     .footer {
+         padding-left: 0;
+         padding-right: 0;
+     }
+     .links {
+         margin-left: 7%;
+     }
+     .rechts {
+         margin-right: 7%;
+     }
+ }
+
+ /* extra media querry om de navbar er optimaal te laten uitzien door de hamburger te vervangen door titels in de header*/
+
+ @media(max-width: 700px) {
+     .navbar>.navbar-btn {
+         display: inline-block;
+         position: absolute;
+         right: 0px;
+         top: 0px;
+     }
+     .navbar>.navbar-btn>label {
+         display: inline-block;
+         width: 50px;
+         height: 50px;
+         padding: 13px;
+     }
+     .navbar>.navbar-btn>label>span {
+         display: block;
+         width: 25px;
+         height: 10px;
+         border-top: 2px solid #eee;
+     }
+     .navbar>.navbar-links {
+         position: absolute;
+         display: block;
+         width: 100%;
+         background-color: #333;
+         height: 0px;
+         transition: all 0.3s ease-in;
+         overflow-y: hidden;
+         top: 50px;
+         left: 0px;
+         z-index: 1;
+     }
+     .navbar>.navbar-links>a {
+         display: block;
+         width: 100%;
+     }
+     /* Het '+'-teken duidt een adjecent sibling selector aan. Het zorgt ervoor dat styling alleen gebeurt als .navbar-links direct achter de id #navbar-check staat */
+     .navbar>#navbar-check:not(:checked)+.navbar-links {
+         height: 0px;
+     }
+     .navbar>#navbar-check:checked+.navbar-links {
+         /* De calc() function heb ik gebruikt om de correcte hoogte van het scherm te berekenen wanneer het navigatiemenu uitgeklapt wordt. */
+         height: calc(100vh - 50px);
+         overflow-y: auto;
+     }
+ }
+
+ @media(min-width: 700px) {
+     .googlemaps {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         grid-auto-rows: minmax(auto);
+         grid-gap: 1.5em;
+     }
+     .afbeeldingoverons {
+         width: 1fr;
+         height: 200px;
+     }
+     .overons {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+     }
+     .overons hr {
         display: none;
     }
-    .centerscreen {
-        display: block;
-        position: relative;
-        width: 100%;
-    }
-    .content, .disclaimer {
-        margin-left: 7%;
-        margin-right: 7%;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-    .hoofdtitel {
-        padding: 0;
-        background: none;
-    }
-    .omslagfoto {
-        display: block;
-        object-fit: cover;
-        height: 100px;
-    }
-    .assortiment {
-        display: grid;
-        grid-area: assortiment;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1em;
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-    .contentindex {
-        display: inline-block;
-    }
-    .winkelwagen{
-        margin-left: 7%;
-    }
-    .disclaimer {
-        padding-left: 0;
-    }
-    /* Deze stijlen zorgen ervoor dat er een inspringing in de header/footer komt van zodra het scherm groter wordt dan 481 px;*/
-    .navbar-header {
-        margin-left: 7%;
-    }
-    .navbar-titel {
-        padding-left: 0;
-    }
-    .navbar-btn {
-        margin-right: 7%;
-    }
-    .navbar-btn>label {
-        display: block
-    }
-    .navbar-links>a {
-        margin-left: 7%;
-    }
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .footer .links {
-        margin-left: 7%;
-    }
-    .footer .rechts {
-        margin-right: 7%;
-    }
-}
+     .assortiment {
+         margin-left: 10%;
+         margin-right: 10%;
+     }
+     .navbar-links {
+         margin-right: 7%;
+     }
+     .navbar-links>a {
+         margin-left: 0;
+     }
+     /* CSS hack om ervoor te zorgen dat de rechterkant van 'over ons' in de navigatie mooi uitkomt tegen de 7% margin */
+     #overons {
+         padding-right: 0;
+     }
+ }
 
-/* extra media querry om de navbar er optimaal te laten uitzien door de hamburger te vervangen door titels in de header*/
+ /* Laptop/desktop layout */
 
-@media(max-width: 700px) {
-    .navbar>.navbar-btn {
-        display: inline-block;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-    }
-    .navbar>.navbar-btn>label {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        padding: 13px;
-    }
-    .navbar>.navbar-btn>label>span {
-        display: block;
-        width: 25px;
-        height: 10px;
-        border-top: 2px solid #eee;
-    }
-    .navbar>.navbar-links {
-        position: absolute;
-        display: block;
-        width: 100%;
-        background-color: #333;
-        height: 0px;
-        transition: all 0.3s ease-in;
-        overflow-y: hidden;
-        top: 50px;
-        left: 0px;
-        z-index: 1;
-    }
-    .navbar>.navbar-links>a {
-        display: block;
-        width: 100%;
-    }
-    .navbar>#navbar-check:not(:checked)+.navbar-links {
-        height: 0px;
-    }
-    .navbar>#navbar-check:checked+.navbar-links {
-        height: calc(100vh - 50px);
-        overflow-y: auto;
-    }
-}
+ @media(min-width: 1024px) {
+     .iconinfo>img {
+         height: 60px;
+         width: 60px;
+         margin: 0 10px 10px 10px;
+         float: left;
+     }
+     .afbeeldingoverons {
+         height: 250px;
+         margin: 0;
+     }
+     .overons {
+         display: grid;
+         grid-area: content;
+         grid-template-columns: repeat(3, 1fr);
+         justify-content: center;
+     }
+     .assortiment {
+         grid-template-columns: repeat(4, 1fr);
+         margin-left: 15%;
+         margin-right: 15%;
+     }
+     .a, .k, .e1, .r, .m, .e2 {
+         animation-timing-function: ease-in-out;
+         animation-duration: .2s;
+     }
+     .navbar-titel:hover .a {
+         animation-name: lettersprong;
+         animation-delay: .1s;
+     }
+     .navbar-titel:hover .k {
+         animation-name: lettersprong;
+         animation-delay: .2s;
+     }
+     .navbar-titel:hover .e1 {
+         animation-name: lettersprong;
+         animation-delay: .3s;
+     }
+     .navbar-titel:hover .r {
+         animation-name: lettersprong;
+         animation-delay: .4s;
+     }
+     .navbar-titel:hover .m {
+         animation-name: lettersprong;
+         animation-delay: .5s;
+     }
+     .navbar-titel:hover .e2 {
+         animation-name: lettersprong;
+         animation-delay: .6s;
+     }
+     .navbar-titel:hover .broodlogo {
+         animation-name: broodanimatie;
+         animation-duration: 0.82s;
+         animation-timing-function: cubic-bezier(.36, .07, .19, .97);
+         animation-iteration-count: 3;
+     }
+     .content .googlemaps>div>iframe {
+         width: 100%;
+         height: 250px;
+     }
+     @keyframes lettersprong {
+         0%, 20% {
+             transform: translateY(0);
+         }
+         50%, 70% {
+             transform: translateY(-5px);
+         }
+     }
+     @keyframes broodanimatie {
+         10%, 90% {
+             transform: translate3d(-1px, 0, 0);
+         }
+         20%, 80% {
+             transform: translate3d(2px, 0, 0);
+         }
+         30%, 50%, 70% {
+             transform: translate3d(-4px, 0, 0);
+         }
+         40%, 60% {
+             transform: translate3d(4px, 0, 0);
+         }
+     }
+ }
 
-@media(min-width: 700px) {
-    .googlemaps {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: minmax(auto);
-        grid-gap: 1.5em;
-    }
-    .overonslayout {
-        display: grid;
-        grid-template-columns: 2, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar navbar" "content content" "ft ft"
-    }
-    .afbeeldingoverons {
-        width: 1fr;
-        height: 200px;
-        margin: 0;
-    }
-    .overons {
-        display: grid;
-        grid-area: content;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-    }
-    #donker {
-        background: none;
-        color: black;
-    }
-    .navbar-links{
-        margin-right: 7%;
-    }
-    .navbar-links>a {
-        margin-left: 0;
-    }
-    /* CSS hack om ervoor te zorgen dat de rechterkant van 'over ons' mooi uitkomt tegen de 7% margin */
-    #overons {
-        padding-right: 0;
-    }
-}
+ /* Extra media querry voor extra grote schermen */
 
-/* Laptop/desktop layout */
-
-@media(min-width: 1024px) {
-    .indexlayout {
-        display: grid;
-        grid-template-columns: 3, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar navbar navbar" "titel titel titel" "content content new" "ft ft ft";
-    }
-    .overonslayout {
-        display: grid;
-        grid-template-columns: 1, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar navbar navbar" "ft ft ft"
-    }
-    .afbeeldingoverons {
-        height: 250px;
-        margin: 0;
-    }
-    .overons {
-        display: grid;
-        grid-area: content;
-        grid-template-columns: repeat(3, 1fr);
-        justify-content: center;
-    }
-    #donker>p {
-        margin: 0px;
-    }
-    .whatsnew {
-        display: block;
-    }
-    .a, .k, .e1, .r, .m, .e2 {
-        animation-timing-function: ease-in-out;
-        animation-duration: .2s;
-        animation-iteration-count: 1;
-    }
-    .navbar-titel:hover .a {
-        animation-name: a;
-        animation-delay: .1s;
-    }
-    .navbar-titel:hover .k {
-        animation-name: k;
-        animation-delay: .2s;
-    }
-    .navbar-titel:hover .e1 {
-        animation-name: e1;
-        animation-delay: .3s;
-    }
-    .navbar-titel:hover .r {
-        animation-name: r;
-        animation-delay: .4s;
-    }
-    .navbar-titel:hover .m {
-        animation-name: m;
-        animation-delay: .5s;
-    }
-    .navbar-titel:hover .e2 {
-        animation-name: e2;
-        animation-delay: .6s;
-    }
-    .navbar-titel:hover .broodlogo {
-        animation-name: broodanimatie;
-        animation-duration: 0.82s;
-        animation-timing-function: cubic-bezier(.36, .07, .19, .97);
-        animation-iteration-count: infinite;
-    }
-    @keyframes a {
-        0%, 20% {
-            transform: translateY(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes k {
-        0%, 20% {
-            transform: translateY(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes e1 {
-        0%, 20% {
-            transform: translateY(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes r {
-        0%, 20% {
-            transform: translatey(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes m {
-        0%, 20% {
-            transform: translateY(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes e2 {
-        0%, 20% {
-            transform: translateY(0);
-        }
-        50%, 70% {
-            transform: translateY(-5px);
-        }
-    }
-    @keyframes broodanimatie {
-        10%, 90% {
-            transform: translate3d(-1px, 0, 0);
-        }
-        20%, 80% {
-            transform: translate3d(2px, 0, 0);
-        }
-        30%, 50%, 70% {
-            transform: translate3d(-4px, 0, 0);
-        }
-        40%, 60% {
-            transform: translate3d(4px, 0, 0);
-        }
-    }
-}
-
-@media(min-width: 1200px) {
-    .indexlayout {
-        display: grid;
-        grid-template-columns: 3, 1fr;
-        grid-auto-rows: minmax(auto);
-        grid-template-areas: "navbar navbar navbar" "titel titel titel" "content content new" "ft ft ft";
-    }
-}
+ @media(min-width: 1200px) {
+     .assortiment {
+         grid-template-columns: repeat(5, 1fr);
+         margin-left: 18%;
+         margin-right: 18%;
+     }
+ }

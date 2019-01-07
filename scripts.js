@@ -34,7 +34,7 @@ function bestel(product) {
 
         case "witcarre":
             prijs = prijswitcarre;
-            betereOutputType = "wit carré"
+            betereOutputType = "wit carré";
             break;
 
         case "baguette":
@@ -47,11 +47,12 @@ function bestel(product) {
 
         case "eclair":
             prijs = prijseclair;
+            betereOutputType = "éclair";
             break;
 
         case "goudajong":
             prijs = prijsgoudajong;
-            betereOutputType = "jonge gouda"
+            betereOutputType = "jonge gouda";
             break;
 
         case "volkorenbrood":
@@ -83,6 +84,9 @@ function bestel(product) {
     var betereOutputPrijs = tweedecimalen(prijs) // methode tweedecimalen zorgt ervoor dat ik de prijs met een mooie string kan tonen
 
     var aantal = prompt("hoeveel " + betereOutputType + " wil je bestellen? (prijs: " + betereOutputPrijs + ")");
+    if (aantal == "") {
+        aantal = 0;
+    }
     // ik werk met cookies omdat dat de eenvoudigste en snelste manier is voor dit project. Bij grotere projecten kan er beter met een database/API gewerkt worden voor efficentere code.
     // Aangezien dit project sowieso al geen JS nodig heeft, maar ik dit gewoon wil voor wat functionaliteit te laten zien, doe ik het op deze manier.
 
