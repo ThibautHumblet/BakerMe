@@ -30,6 +30,12 @@ Thibaut Humblet, 1EA4
      background-image: url("https://www.transparenttextures.com/patterns/ag-square.png");
  }
 
+ h1 {
+     margin-bottom: 20px;
+     font-size: 20px;
+     font-weight: bold;
+ }
+
  /* Styling van een klasse. Dit gebeurt via een punt vlak voor de naam toe te voegen. */
 
  .logobrood {
@@ -114,15 +120,15 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
 
  .iconinfo {
      width: auto;
-     display: inline-block;
+     display: block;
      padding-left: 10px;
      padding-right: 10px;
      margin-bottom: 50px;
  }
 
  .iconinfo>img {
-     width: auto;
-     height: 50px;
+     width: 4em;
+     height: 4em;
      border-style: solid;
      border-radius: 45px;
      background-color: coral;
@@ -239,7 +245,6 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
  }
 
  .checkmark:after {
-     content: "";
      position: absolute;
      display: none;
  }
@@ -269,7 +274,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      padding-right: 25px;
  }
 
- .assortimentitem {
+ .assortiment>div {
      width: auto;
      height: 100%;
      border-style: solid;
@@ -278,7 +283,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      background-color: coral;
  }
 
- .assortimentitem p {
+ .assortiment>div p {
      padding: 10px;
      font-size: 15px;
      float: left;
@@ -286,7 +291,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      max-width: 75%;
  }
 
- .assortimentitem>.fa {
+ .assortiment>div>.fa {
      margin-top: 10px;
      margin-right: 15px;
      float: right;
@@ -387,6 +392,10 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      margin-left: 10px;
  }
 
+ .winkelwagen span {
+     width: 15%;
+ }
+
  .disclaimer {
      display: grid;
      grid-area: disclaimer;
@@ -395,14 +404,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      display: block;
  }
 
- .disclaimer h1 {
-     margin-top: 25px;
-     font-size: 20px;
-     font-weight: bold;
- }
-
  .disclaimer p {
-     margin-top: 20px;
      margin-bottom: 20px;
  }
 
@@ -461,29 +463,8 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          background-repeat: no-repeat;
          background-position-x: center;
      }
-     .indexlayout {
-         display: grid;
-         grid-template-columns: 1, 1fr;
-         grid-auto-rows: minmax(auto);
-         grid-template-areas: "navbar" "titel" "mobknop" "ft";
-     }
-     .webshoplayout {
-         display: grid;
-         grid-template-columns: repeat() 1, 1fr;
-         grid-auto-rows: minmax(auto);
-         grid-template-areas: "navbar" "content" "assortiment" "ft";
-     }
-     .overonslayout {
-         display: grid;
-         grid-template-columns: 1, 1fr;
-         grid-auto-rows: minmax(auto);
-         grid-template-areas: "navbar" "content" "ft";
-     }
      .navbar-titel {
          padding: 0px 10px 10px 10px;
-     }
-     .winkelwagen span {
-         width: 25%;
      }
  }
 
@@ -494,7 +475,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          display: grid;
          grid-template-columns: 2, 1fr;
          grid-auto-rows: minmax(auto);
-         grid-template-areas: "navbar navbar" "titel titel" "mobknop mobknop" "ft ft";
+         grid-template-areas: "navbar" "titel" "mobknop" "ft";
      }
      .webshoplayout {
          display: grid;
@@ -537,6 +518,9 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      .winkelwagen {
          margin-left: 7%;
      }
+     .winkelwagen span {
+         width: 0;
+     }
      .disclaimer {
          padding-left: 0;
      }
@@ -548,8 +532,12 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          padding-left: 25px;
          padding-right: 25px;
      }
+     .iconinfo>img {
+         height: 3em;
+         width: 3em;
+     }
      .terugwebshop {
-        padding-bottom: 0px;
+         padding-bottom: 0px;
      }
      /* Deze stijlen zorgen ervoor dat er een inspringing in de header/footer komt van zodra het scherm groter wordt dan 481 px;*/
      .navbar-header {
@@ -643,8 +631,8 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          grid-template-columns: repeat(2, 1fr);
      }
      .overons hr {
-        display: none;
-    }
+         display: none;
+     }
      .assortiment {
          margin-left: 10%;
          margin-right: 10%;
@@ -655,23 +643,32 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      .navbar-links>a {
          margin-left: 0;
      }
-     /* CSS hack om ervoor te zorgen dat de rechterkant van 'over ons' in de navigatie mooi uitkomt tegen de 7% margin */
-     #overons {
-         padding-right: 0;
-     }
  }
 
  /* Laptop/desktop layout */
 
  @media(min-width: 1024px) {
-     .iconinfo>img {
-         height: 60px;
-         width: 60px;
-         margin: 0 10px 10px 10px;
-         float: left;
+     .iconinfo {
+         display: flex;
+         align-items: center;
      }
+     .iconinfo>img {
+         /* Position: absolute is een kleine css hack die ik heb gebruikt om te voorkomen dat de image zich automatisch herschaalde na een refresh van de pagina (vermoedelijk lag dit aan de display: flex van iconinfo */
+         position: absolute;
+         width: 4em;
+         height: 4em;
+         margin: 0 10px 10px 10px;
+     }
+     .iconinfo>p {
+         padding-bottom: 10px;
+         padding-left: 5.5em;
+     }
+     .content .googlemaps>div>iframe {
+        width: 100%;
+        height: 250px;
+    }
      .afbeeldingoverons {
-         height: 250px;
+         height: 200px;
          margin: 0;
      }
      .overons {
@@ -685,6 +682,7 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          margin-left: 15%;
          margin-right: 15%;
      }
+     /* Animatie wordt hier op de letters van het logo gezet */
      .a, .k, .e1, .r, .m, .e2 {
          animation-timing-function: ease-in-out;
          animation-duration: .2s;
@@ -715,13 +713,10 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
      }
      .navbar-titel:hover .broodlogo {
          animation-name: broodanimatie;
-         animation-duration: 0.82s;
+         animation-duration: 0.8s;
+         /* Functie geschreven mbv. online converter */
          animation-timing-function: cubic-bezier(.36, .07, .19, .97);
          animation-iteration-count: 3;
-     }
-     .content .googlemaps>div>iframe {
-         width: 100%;
-         height: 250px;
      }
      @keyframes lettersprong {
          0%, 20% {
@@ -754,5 +749,8 @@ Ik heb het hier met een general sibling selector gedaan omdat dit properder is d
          grid-template-columns: repeat(5, 1fr);
          margin-left: 18%;
          margin-right: 18%;
+     }
+     .afbeeldingoverons {
+         height: 250px;
      }
  }
